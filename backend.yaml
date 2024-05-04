@@ -12,8 +12,8 @@
     ansible.builtin.command: dnf module enable nodejs:20 -y
 
   - name: install nodejs
-    ansible.builtin.command: 
-      name: "{{item}}"
+    ansible.builtin.dnf: # only works for Redhat family
+      name: "{{ item }}"
       state: installed
     loop:
     - nodejs
