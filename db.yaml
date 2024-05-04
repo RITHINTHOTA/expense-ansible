@@ -1,0 +1,18 @@
+- name: configure db server
+  hosts: db
+  become: yes
+  vars: 
+    login_host: db.rithinexpense.online
+  vars_prompt:
+  - name: mysql_root_password
+    private: no
+  tasks:
+  - name: Install mysql server
+    ansible.builtin.dnf:
+      name: mysql_server
+      state: latest
+  - name: start and enable mysql server
+    ansible.builtin.service:
+      name: mysqld
+      state: started
+      enabled: yes
