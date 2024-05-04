@@ -11,7 +11,7 @@
   - name: enable nodejs 20
     ansible.builtin.command: dnf module enable nodejs:20 -y
 
-  - name: insatll nodejs
+  - name: install nodejs
     ansible.builtin.command: 
       name: "{{ item }}"
       state: installed
@@ -32,7 +32,7 @@
     ansible.builtin.get_url:
       url: curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
       dest: /tmp/backend.zip
-      
+
   - name: unzip backend code
     ansible.builtin.unarchieve:
       src: /tmp/backend.zip
@@ -41,7 +41,7 @@
 
    - name: install npm dependencies
     ansible.builtin.command: npm install
-    args:
+      args:
       chdir: /app
 
   - name: copy backend service
