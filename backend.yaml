@@ -34,7 +34,7 @@
       dest: /tmp/backend.zip
 
   - name: unzip backend code
-    ansible.builtin.unarchieve:
+    ansible.builtin.unarchive:
       src: /tmp/backend.zip
       dest: /app
       remote_src: yes
